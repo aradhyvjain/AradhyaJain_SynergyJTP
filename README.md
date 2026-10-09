@@ -1,1 +1,0 @@
-# AradhyaJain_SynergyJTP
