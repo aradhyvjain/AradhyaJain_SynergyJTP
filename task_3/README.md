@@ -23,8 +23,8 @@ Data type: int64
 
 Explanation
 np.array() creates a NumPy array. 
-The shape attribute gives the size along each dimension 
-ndim gives the number of dimensions, 
+The shape attribute gives the size 
+ndim gives the dimensions, 
 size gives the total number of elements 
 and dtype gives the element data type.
 
@@ -57,8 +57,8 @@ Filled with 7:
 Explanation
 np.zeros() creates an array filled with zeros, 
 np.ones() creates an array filled with ones, and 
-np.full() fills an array of the specified shape with a chosen value. 
-The dtype=int argument makes the ones array contain integers.
+np.full() fills an array of the specified shape with a certain value. 
+The dtype=int argument makes the array contain integers.
 
 
 Question 3: Generating Random Arrays
@@ -95,8 +95,7 @@ Random integers from 1 to 100:
 Explanation
 np.random.default_rng() creates a random-number generator. 
 rng.random((3, 3)) creates a 3 × 3 array of random floats between 0 and 1. 
-rng.integers(0, 10, size=(2, 5)) creates integers from 0 through 9. 
-np.random.randint(1, 101, size=(4, 4)) creates integers from 1 through 100 because the upper bound is excluded.
+rng.integers(0, 10, size=(2, 5)) creates integers from 0 .
 
 
 Question 4: Comparing Memory Usage of int8 and int64
@@ -121,9 +120,8 @@ int64 nbytes: 80
 
 Explanation
 np.arange(10) creates integers from 0 to 9. 
-The dtype argument sets the data type. 
+The dtype argument sets the number of bits/bytes. 
 nbytes reports the memory occupied by the array's elements. 
-Each int8 element uses 1 byte, while each int64 element uses 8 bytes.
 
 
 Question 5: Accessing Rows and Columns
