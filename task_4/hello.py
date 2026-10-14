@@ -1,13 +1,25 @@
 import numpy as np
 import pandas as pd
-catalog = {'product': ['USB-C Hub Pro', 'Notebook A5', 'Gel Pen Pack', 'Laptop Stand Pro', 'Desk Lamp', 'Mouse Pad XL', 'Webcam Pro', 'Sticky Notes'], 'category': ['Electronics', 'Stationery', 'Stationery', 'Electronics', 'Home', 'Accessories', 'Electronics', 'Stationery'], 'price': [1299, 120, 90, 1599, 899, 349, 2499, 60], 'units_sold': [85, 400, 520, 60, 110, 230, 25, 610]}
-df=pd.DataFrame(catalog)
-print(df)
-print("Products whose name contains Pro")
-print((df['product'].str.contains('Pro')).sum())
-print("Products in the home or stationary categories")
-print(((df["category"]=='Stationery') | (df['category']=='Home')).sum())
-print("products priced between 300 and 1500 inclusive")
-print(((df['price']>=300) & (df['price']<=1500)).sum())
-print("Pro products that sold fewer than 70 units.")
-print((df['units_sold']<70).sum())
+orders = pd.DataFrame({
+    'order_id': [101, 102, 103, 101, 104, 105, 106, 105],
+    'customer': ['Asha', 'ravi', 'Meera', 'Asha', 'Kiran', 'ravi', 'Meera', 'Ravi'],
+    'product': ['laptop bag', 'Laptop Bag ', 'desk lamp', 'laptop bag', 'DESK LAMP', 'notebook', 'Notebook', 'Notebook '],
+    'amount': [1200, 1200, 900, 1200, 900, 150, 150, 150]})
+print(orders)
+initial_revenue=orders['amount'].sum()
+x=orders.shape
+print("rowcount:",x[0])
+print("Total revenue before cleaning",initial_revenue)
+orders=orders.drop_duplicates()
+print(orders)
+x=orders.shape
+print("rowcount after removing duplicates",x[0])
+orders["customer"]=orders["customer"].str.strip().str.capitalize()
+orders["product"]=orders["product"].str.strip().str.capitalize()
+orders=orders.drop_duplicates()
+final_revenue=orders['amount'].sum()
+print(orders)
+print("Total revenue after cleaning",final_revenue)
+inlation_percent=(initial_revenue-final_revenue)/final_revenue*100
+print("Inflated revenue figure",inlation_percent)
+
