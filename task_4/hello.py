@@ -1,14 +1,17 @@
 import numpy as np
 import pandas as pd
-events={"event":["City Saping","Salutes and ladders","Open Mic","Valorant Tournament","Gaming Arena"]
-        ,"registered":[180,95,140,60,120]
-        ,"attended":[150,70,135,52,160]
-        ,"fee":[200,150,0,50,100]}
-data=pd.DataFrame(events)
-print("the shape of the data before the new column is added", data.shape)
-data["registered_attendance"]=((data["attended"]/data["registered"])*100).round(1)
-print(data)
-max_registration=data.iat[data["registered"].idxmax(),0]
-print(max_registration, "is the event with highest number of registrations")
-max_attendancerate=data.iat[data["registered_attendance"].idxmax(),0]
-print(max_attendancerate,"is the event with highest attendance rate")
+#creating the dataframe
+data = np.array([[8200, 7.5, 40], [10400, 6.5, 55], [6100, 8.0, 20], [12000, 6.0, 70], [9800, 7.0, 50], [3000, 9.0, 10], [7500, 8.5, 35]])
+days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+df=pd.DataFrame(data, index=['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], columns=["Steps","Sleep_Hours","Active_minutes"])
+print(df)
+#changing the data type from float to int
+df['Steps'] = df['Steps'].astype(int)
+df['Active_minutes']=df['Active_minutes'].astype(int)
+print(df.dtypes)
+#using discribe function
+print("using describe function to print average sleep and average steps")
+print(df["Steps"].describe(),df['Sleep_Hours'].describe())
+#using idxmax() and idxmin()
+print("The day with most steps is",df["Steps"].idxmax())
+print("The day with least sleep is",df['Sleep_Hours'].idxmin())
