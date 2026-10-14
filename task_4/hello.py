@@ -1,17 +1,19 @@
 import numpy as np
 import pandas as pd
 #creating the dataframe
-data = np.array([[8200, 7.5, 40], [10400, 6.5, 55], [6100, 8.0, 20], [12000, 6.0, 70], [9800, 7.0, 50], [3000, 9.0, 10], [7500, 8.5, 35]])
-days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-df=pd.DataFrame(data, index=['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], columns=["Steps","Sleep_Hours","Active_minutes"])
+songs = {'song': ['Neon Drive', 'Monsoon Loop', 'Gravity', 'Night Bus', 'Cherry Static', 'Dust Roads', 'Run It Back', 'Paper Moon'],
+         'genre': ['Pop', 'LoFi', 'Rock', 'LoFi', 'Pop', 'Folk', 'HipHop', 'Folk'],
+         'streams_k': [520, 310, 450, 280, 610, 150, 390, 205],
+         'skip_pct': [18, 9, 32, 12, 41, 7, 27, 10],
+         'duration_sec': [201, 245, 289, 198, 176, 310, 187, 262]}
+df=pd.DataFrame(songs)
 print(df)
-#changing the data type from float to int
-df['Steps'] = df['Steps'].astype(int)
-df['Active_minutes']=df['Active_minutes'].astype(int)
+print("\n")
+print("The shape of the dataframe is",df.shape)
 print(df.dtypes)
-#using discribe function
-print("using describe function to print average sleep and average steps")
-print(df["Steps"].describe(),df['Sleep_Hours'].describe())
-#using idxmax() and idxmin()
-print("The day with most steps is",df["Steps"].idxmax())
-print("The day with least sleep is",df['Sleep_Hours'].idxmin())
+print("\n")
+print("The unique genres are", df['genre'].unique())
+print("\n")
+print("Top 3 songs by streams are\n",df.loc[df['streams_k'].nlargest(3).index,'song'])
+print("\nPopular songs and frequently skipped songs")
+print(df[(df['streams_k']>400)&(df['skip_pct']>25)])

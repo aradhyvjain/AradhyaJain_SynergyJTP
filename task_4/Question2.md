@@ -1,4 +1,4 @@
-# Question-1 Fitness tracker week
+# Question-2 Fitness tracker week
 ## Aim
 to understand how to do type conversion, use describe function and use idxmin() and idxmax()
 
