@@ -1,19 +1,13 @@
 import numpy as np
 import pandas as pd
-#creating the dataframe
-songs = {'song': ['Neon Drive', 'Monsoon Loop', 'Gravity', 'Night Bus', 'Cherry Static', 'Dust Roads', 'Run It Back', 'Paper Moon'],
-         'genre': ['Pop', 'LoFi', 'Rock', 'LoFi', 'Pop', 'Folk', 'HipHop', 'Folk'],
-         'streams_k': [520, 310, 450, 280, 610, 150, 390, 205],
-         'skip_pct': [18, 9, 32, 12, 41, 7, 27, 10],
-         'duration_sec': [201, 245, 289, 198, 176, 310, 187, 262]}
-df=pd.DataFrame(songs)
+catalog = {'product': ['USB-C Hub Pro', 'Notebook A5', 'Gel Pen Pack', 'Laptop Stand Pro', 'Desk Lamp', 'Mouse Pad XL', 'Webcam Pro', 'Sticky Notes'], 'category': ['Electronics', 'Stationery', 'Stationery', 'Electronics', 'Home', 'Accessories', 'Electronics', 'Stationery'], 'price': [1299, 120, 90, 1599, 899, 349, 2499, 60], 'units_sold': [85, 400, 520, 60, 110, 230, 25, 610]}
+df=pd.DataFrame(catalog)
 print(df)
-print("\n")
-print("The shape of the dataframe is",df.shape)
-print(df.dtypes)
-print("\n")
-print("The unique genres are", df['genre'].unique())
-print("\n")
-print("Top 3 songs by streams are\n",df.loc[df['streams_k'].nlargest(3).index,'song'])
-print("\nPopular songs and frequently skipped songs")
-print(df[(df['streams_k']>400)&(df['skip_pct']>25)])
+print("Products whose name contains Pro")
+print((df['product'].str.contains('Pro')).sum())
+print("Products in the home or stationary categories")
+print(((df["category"]=='Stationery') | (df['category']=='Home')).sum())
+print("products priced between 300 and 1500 inclusive")
+print(((df['price']>=300) & (df['price']<=1500)).sum())
+print("Pro products that sold fewer than 70 units.")
+print((df['units_sold']<70).sum())
