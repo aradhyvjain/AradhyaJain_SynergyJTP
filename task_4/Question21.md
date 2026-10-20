@@ -1,0 +1,31 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+scores = [12, 18, 22, 25, 28, 31, 33, 35, 38, 41, 44, 47, 52, 55, 58, 61, 67, 74, 88, 95]
+# plt.hist(scores, bins=5)
+# plt.hist(scores, bins=10)
+# plt.show()
+meanvalue=np.mean(scores)
+medianvalue=np.median(scores)
+fig,axes=plt.subplots(1,2,sharey=True)
+axes[0].hist(scores,bins=5,range=(0,100), color='skyblue', edgecolor='black')
+axes[0].axvline(meanvalue, color='red', linestyle='--', linewidth=2, label="mean {}".format(meanvalue))
+axes[0].axvline(medianvalue, color='green', linestyle='-', linewidth=2, label="median {}".format(medianvalue))
+axes[0].set_title("5 bin histogram")
+axes[0].set_xlabel('Scores')
+axes[0].set_ylabel('Number of Players')
+axes[0].set_xlim(0,100)
+axes[0].legend()
+axes[0].grid()
+
+axes[1].hist(scores,bins=10,range=(0,100), color='red', edgecolor='black')
+axes[1].axvline(meanvalue, color='red', linestyle='--', linewidth=2, label="mean {}".format(meanvalue))
+axes[1].axvline(medianvalue, color='green', linestyle='-', linewidth=2, label="median {}".format(medianvalue))
+axes[1].set_title("10 bin histogram")
+axes[1].set_xlabel('Scores')
+axes[1].set_ylabel('Number of Players')
+axes[1].set_xlim(0,100)
+axes[1].legend()
+axes[1].grid()
+plt.tight_layout()
+plt.show()

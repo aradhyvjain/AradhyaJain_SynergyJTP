@@ -30,7 +30,7 @@ inlation_percent=(initial_revenue-final_revenue)/final_revenue*100
 print("Inflated revenue figure",inlation_percent)
 ```
 
-# Output
+## Output
 ```text
    order_id customer      product  amount
 0       101     Asha   laptop bag    1200
@@ -63,10 +63,10 @@ Total revenue after cleaning 4500
 Inflated revenue figure 30.0
 ```
 
-# Explanation
+## Explanation
 drop_duplicates() is used to delete the rows which have exactly same values for every same column. strip() and .capitalize() are used to remove speaces and convert first letter of every string into capital.
 In orders["product"].str.strip().str.capitalize() it is necessary to write .str as python will throw and attribute error orders["product"] accesses series from dataframe and you cannot perform strip on series so .str is used to access the string in the series.
 
 
-# Interpretation
+## Interpretation
 First attempt missed a duplicate as 'laptop bag' and 'Laptop Bag ' are two different things. They are not same.
