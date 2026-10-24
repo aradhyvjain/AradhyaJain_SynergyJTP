@@ -78,7 +78,7 @@ with open("summary_after.json","w") as f:
     json.dump(messy_data_summary,f)
 
 #exporting the clean data as csv
-with open('clean_data.csv', mode='w', newline='', encoding='utf-8') as csvfile:
+with open('clean_data.csv', mode='w', newline='') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerows(clean_data)
     print("data has been successfully expoted in the form of csv")
